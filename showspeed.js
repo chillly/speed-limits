@@ -20,9 +20,9 @@ function init() {
 	
 	var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 	var osmAttrib='Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA</a>';
-	var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 18, attribution: osmAttrib});		
-	
-	map.setView(hull,14); // set the map to show in Hull and zoom 14
+	var osm = new L.TileLayer(osmUrl, {minZoom: 14, maxZoom: 18, attribution: osmAttrib});		
+
+	map.setView(hull,15); // set the map to show in Hull and zoom 14
 	map.addLayer(osm); // add the base Mapnik layer from OSM
 	map.speedLayer = new L.GeoJSON(); // create a new, empty, GeoJSON layer
 	map.addLayer(map.speedLayer); // Add the layer for later use
