@@ -2,6 +2,8 @@
 
 # process an OSM file to extract roads 
 
+# Licence: DWYWT v 1.0 See LICENCE file
+
 import sys
 import os.path
 import argparse

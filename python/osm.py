@@ -2,6 +2,8 @@
 
 # classes for OSM data
 
+# Licence: DWYWT v 1.0 See LICENCE file
+
 from xml.sax.handler import ContentHandler
 
 class OSMNode:
