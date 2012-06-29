@@ -1,0 +1,26 @@
+speed-limits
+============
+
+This is a collection of scripts to demonstrate how to draw vector data 
+as an overlay on an OSM map, using Leaflet. The OSM data is parsed with 
+a Python script to extract roads. These are stored in a MySQL database 
+to allow later use. The Python script, with import scripts, are in the 
+python folder. The database table schemas are included in the database 
+folder.
+
+The map is displayed using an html file (index.htm). The supporting CSS 
+and JavaScript files are included. A PHP script (getspeeds.php) is used 
+to extract the required road data from the database and send it to the 
+JavaScript using AJAX. The data is encoded as GeoJSON. 
+
+Note: the database host, username, password and dbname need to be 
+changed to suit your system in the file python/hupd.py. This gives the 
+Python script access to your database. The hostname, username, password 
+and dbname need to be changed to suit your system in the file 
+include/db.php. This gives the PHP script access to your database. You 
+may, of course, change this security to suit you local way or working. 
+
+Note: the leaflet code will need to be added. I have not included the 
+distribution here, you should get the latest stable version from 
+https://github.com/CloudMade/Leaflet/ . You then copy the dist folder 
+into your working folder and rename it to leaflet.
