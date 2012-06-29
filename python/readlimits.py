@@ -55,10 +55,11 @@ def main():
 	print 'Relations {0}'.format(len(OSM.Relations))
 	
 	# open the database ready for updates
-	h,u,p,d = hupd()
+	h,u,p,d = hupd() # get the host, username password and database from an import file so it's not hardcoded here
 	conn = mdb.connect(h,u,p,d)
 	croad = conn.cursor()
 	
+	# this is a set of hoghway types I'm interested in
 	hwtype=('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','tertiary','residential','unclassified')
 	
 	# find the ways that are highways
@@ -85,13 +86,11 @@ def main():
 			else:
 				ms=''
 			hw=way.Tags['highway']
-			#print 'osmid:{0} north:{1} south:{2} east:{3} west:{4} highway:{5} maxspeed:{6}'.format(way.WayID,north,south,east,west,hw,ms)
 			croad.execute("INSERT INTO road (osmid,north,south,east,west,highway,maxspeed) VALUES(%s,%s,%s,%s,%s,%s,%s)",(way.WayID,north,south,east,west,hw,ms))
 			roadid=croad.lastrowid
 			for n in way.Nds:
 				lon=OSM.Nodes[int(n)].Lon
 				lat=OSM.Nodes[int(n)].Lat
-				#print '  roadid: xxx lon:{0} lat:{1}'.format(lon,lat)
 				croad.execute("INSERT INTO roadpoints (roadid,lon,lat) VALUES(%s,%s,%s)",(roadid,lon,lat))
 	
 	conn.close()
